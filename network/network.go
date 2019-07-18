@@ -54,6 +54,11 @@ func (n Network) getHead(el *Element) *Element {
 // Connect two Elements or segments of the Network
 func (n Network) Connect(firstID, secondID int) {
 
+	if isAlreadyConnected := n.Query(firstID, secondID); isAlreadyConnected {
+		return
+	}
+
+
 	var (
 		firstEl  *Element
 		secondEl *Element
